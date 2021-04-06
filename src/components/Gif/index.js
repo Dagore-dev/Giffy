@@ -1,13 +1,15 @@
+import { Link } from 'wouter';
 
+import './styles.css';
 
-const Gif = ( { title, id, url } ) => {
+export default function Gif ( { title, id, url } ) {
 
     return(
-        <div>
-            <h4> {title} </h4>
-            <img src={url} alt={title} />
+        <div className='Gif'>
+            <Link to={`/gif/${id}`}>
+                <h4> {title} </h4>
+                <img loading='lazy' src={url} alt={title} />
+            </Link>
         </div>
     )
 }
-
-export default Gif;

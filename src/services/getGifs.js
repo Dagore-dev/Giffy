@@ -1,7 +1,7 @@
 const apiKey = 'QNZXR0lqOh2HB7pPLAUUCM7pQhC5GVRv' ;
 
 const getGifs = ( { keyword = 'wandavision' } = {} ) => {
-    const apiURL = `https://api.giphy.com/v1/gifs/search?api_key=${apiKey}&q=${keyword}&limit=10&offset=0&rating=g&lang=es`;
+    const apiURL = `https://api.giphy.com/v1/gifs/search?api_key=${apiKey}&q=${keyword}&limit=25&offset=0&rating=g&lang=es`;
 
     try{
         return fetch(apiURL)
