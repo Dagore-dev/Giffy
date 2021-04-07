@@ -1,10 +1,10 @@
 const apiKey = 'QNZXR0lqOh2HB7pPLAUUCM7pQhC5GVRv' ;
 
-const getGifs = ( { keyword = 'wandavision' } = {} ) => {
+export default async function getGifs ( { keyword = 'wandavision' } = {} ) {
     const apiURL = `https://api.giphy.com/v1/gifs/search?api_key=${apiKey}&q=${keyword}&limit=25&offset=0&rating=g&lang=es`;
 
     try{
-        return fetch(apiURL)
+        return await fetch(apiURL)
         .then(res => res.json())
         
         .then(res => {
@@ -19,8 +19,6 @@ const getGifs = ( { keyword = 'wandavision' } = {} ) => {
         })
       }
       catch(e){
-        return console.log(e);
+        return Promise.reject(e);
       }
 }
-
-export default getGifs;

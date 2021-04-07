@@ -1,6 +1,7 @@
 import { Link, Route } from 'wouter';
 
 import './App.css';
+import {GifContextProvider} from './context/GifsContext';
 import SearchResults from './views/SearchResults';
 import Home from './views/Home';
 import Detail from './views/Detail';
@@ -8,21 +9,27 @@ import Detail from './views/Detail';
 function App() {
 
   return (
+
     <div className='App'>
-      <section className='App-content'>
+        <section className='App-content'>
 
-        <Link to='/'>
-          <img className='App-logo' alt='Giffy logo' src='/logo.png' ></img>
-        </Link>
-        
-        <Route component={SearchResults} path='/search/:keyword' />
+          <Link to='/'>
+            <img className='App-logo' alt='Giffy logo' src='/logo.png' ></img>
+          </Link>
+          
+          <GifContextProvider>
 
-        <Route component={Detail} path='/gif/:id'/>
+            <Route component={SearchResults} path='/search/:keyword' />
 
-        <Route component={Home} path='/'/>   
+            <Route component={Detail} path='/gif/:id'/>
 
-      </section>
-    </div>
+            <Route component={Home} path='/'/>   
+
+          </GifContextProvider>
+
+        </section>
+      </div>
+   
   );
 }
 
