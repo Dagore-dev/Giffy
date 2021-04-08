@@ -1,10 +1,10 @@
 import { useState } from 'react';
-import { Link, useLocation } from 'wouter';
+import { useLocation } from 'wouter';
 
 import useGifs from '../../hooks/useGifs';
 import ListOfGifs from '../../components/ListOfGifs';
+import TrendingSearches from '../../components/TrendingsSearches';
 
-const popularGifs = ['wandavision', 'perros', 'gatos'];
 
 export default function Home () {
     const [keyword, setKeyword] = useState('');
@@ -27,15 +27,7 @@ export default function Home () {
                 <input type='submit' value='Buscar' />
             </form>
 
-            <h1>Gifs más populares</h1>
-
-            <ul>
-                {popularGifs.map(popularGif => 
-                
-                <li key={popularGif}>
-                    <Link to={`/search/${popularGif}`}>Gifs de {popularGif}</Link>
-                </li>)}
-            </ul>
+            <TrendingSearches />
 
             <h2>Última búsqueda</h2>
 
