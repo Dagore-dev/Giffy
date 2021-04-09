@@ -1,4 +1,4 @@
-import { apiKey, apiURL } from './settings';
+import { apiKey, apiURL } from 'services/settings';
 
 export default function getSingleGif  ( params ) {
     const api = `${apiURL}/${params.id}?api_key=${apiKey}`;

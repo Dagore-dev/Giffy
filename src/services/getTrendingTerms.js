@@ -1,7 +1,7 @@
-import { apiKey, apiURL } from './settings';
+import { apiKey, apiURL } from 'services/settings';
 
 export default async function getTrendingTerms () {
-    const api = `${apiURL}/trending?api_key=${apiKey}&limit=5&rating=g`;
+    const api = `${apiURL}/trending?api_key=${apiKey}&limit=25&rating=g`;
 
     try{
         return await fetch(api)

@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { useLocation } from 'wouter';
 
-import useGifs from '../../hooks/useGifs';
-import ListOfGifs from '../../components/ListOfGifs';
-import TrendingSearches from '../../components/TrendingsSearches';
+import useGifs from 'hooks/useGifs';
+import ListOfGifs from 'components/ListOfGifs';
+import TrendingSearches from 'components/TrendingsSearches';
 
 
 export default function Home () {
@@ -27,11 +27,11 @@ export default function Home () {
                 <input type='submit' value='Buscar' />
             </form>
 
-            <TrendingSearches />
-
             <h2>Última búsqueda</h2>
 
             <ListOfGifs gifs={gifs} />
+            
+            <TrendingSearches />
         </>
     )
 }

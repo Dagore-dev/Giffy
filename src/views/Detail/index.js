@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 
-import useGlobalGifs from '../../hooks/useGlobalGifs';
-import getSingleGif from '../../services/getSingleGif';
-import Gif from '../../components/Gif';
+import useGlobalGifs from 'hooks/useGlobalGifs';
+import getSingleGif from 'services/getSingleGif';
+import Gif from 'components/Gif';
 
 export default function Detail( { params } ) {
     
