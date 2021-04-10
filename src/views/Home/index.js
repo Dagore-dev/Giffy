@@ -3,7 +3,7 @@ import { useLocation } from 'wouter';
 
 import useGifs from 'hooks/useGifs';
 import ListOfGifs from 'components/ListOfGifs';
-import TrendingSearches from 'components/TrendingsSearches';
+import LazyTrending from 'components/LazyTrending/index';
 
 
 export default function Home () {
@@ -31,7 +31,7 @@ export default function Home () {
 
             <ListOfGifs gifs={gifs} />
             
-            <TrendingSearches />
+            <LazyTrending />
         </>
     )
 }
