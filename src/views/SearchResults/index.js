@@ -5,11 +5,17 @@ import useGifs from 'hooks/useGifs';
 
 export default function SearchResults ( {params} ) {
   const { keyword } = params;
-  const { loading, gifs } = useGifs( { keyword } );
+  const { loading, gifs, setPage } = useGifs( { keyword } );
 
-  return(
-    loading 
+  function handleNextPage () {
+    setPage(prevPage => prevPage + 1)
+  }
+
+  return <>
+    {loading 
     ? <h2>Cargando ...</h2>
-    : <ListOfGifs gifs={gifs}/>
-  )
+    : <ListOfGifs gifs={gifs}/>}
+
+    <button onClick={handleNextPage}>Next page</button>
+  </>
 }
