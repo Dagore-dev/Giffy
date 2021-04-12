@@ -1,5 +1,6 @@
 import { Link, Route } from 'wouter';
 
+import './normalize.css';
 import './App.css';
 import {GifContextProvider} from './context/GifsContext';
 import SearchResults from './views/SearchResults';

@@ -5,10 +5,10 @@ import 'components/Gif/styles.css';
 export default function Gif ( { title, id, url } ) {
 
     return(
-        <div className='Gif'>
+        <div className='gif'>
             <Link to={`/gif/${id}`}>
-                <h4> {title} </h4>
-                <img loading='lazy' src={url} alt={title} />
+                <h4 className='gif__title'> {title} </h4>
+                <img loading='lazy' className='gif__img' src={url} alt={title} />
             </Link>
         </div>
     )
