@@ -1,17 +1,20 @@
+import React, {Suspense} from 'react';
 import { Link, Route } from 'wouter';
 
 import './normalize.css';
 import './App.css';
 import {GifContextProvider} from './context/GifsContext';
-import SearchResults from './views/SearchResults';
-import Home from './views/Home';
-import Detail from './views/Detail';
+
+const SearchResultsPage = React.lazy(() => import('views/SearchResults'));
+const DetailPage = React.lazy(() => import('views/Detail'));
+const HomePage = React.lazy(() => import('views/Home'));
 
 function App() {
 
   return (
 
     <div className='App'>
+        <Suspense fallback='Cargando...'>
         <section className='App-content'>
 
           <Link to='/'>
@@ -20,15 +23,16 @@ function App() {
           
           <GifContextProvider>
 
-            <Route component={SearchResults} path='/search/:keyword' />
+            <Route component={SearchResultsPage} path='/search/:keyword' />
 
-            <Route component={Detail} path='/gif/:id'/>
+            <Route component={DetailPage} path='/gif/:id'/>
 
-            <Route component={Home} path='/'/>   
+            <Route component={HomePage} path='/'/>   
 
           </GifContextProvider>
 
         </section>
+        </Suspense>
       </div>
    
   );

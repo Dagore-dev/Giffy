@@ -2,8 +2,8 @@ import { useState, useEffect, useRef } from 'react';
 
 export default function useNearScreen ( { distance = '100px', externalRef, once = true } = {} ) {
     const [isNearScreen, setIsNearScreen] = useState(false);
-    const fromRef = useRef()
-
+    const fromRef = useRef();
+    
     useEffect(function () {
         let observer;
 

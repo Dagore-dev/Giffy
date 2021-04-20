@@ -10,10 +10,10 @@ export default function SearchResults ( {params} ) {
   const externalRef = useRef();
   const { loading, gifs, setPage } = useGifs( { keyword } );
   const { isNearScreen } = useNearScreen( { externalRef: loading ? null : externalRef, distance: '300px', once: false } );
-//eslint-disable-next-line
-  const debounceHandleNextPage =  useCallback(
-    debounce( () => setPage(prevPage => prevPage + 1), 1000 )
-  )
+
+  const debounceHandleNextPage =  useCallback(debounce(
+    () => setPage(prevPage => prevPage + 1), 200
+  ),[setPage])
 
   useEffect(function () {
     if(isNearScreen) debounceHandleNextPage();
@@ -23,7 +23,7 @@ export default function SearchResults ( {params} ) {
     {loading 
     ? <h2>Cargando ...</h2>
     : <>
-      <ListOfGifs gifs={gifs}/>
+      <ListOfGifs gifs={gifs} keyword={keyword}/>
       <span ref={externalRef}></span>
     </>}
 
