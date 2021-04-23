@@ -1,8 +1,9 @@
+import React from 'react';
 import { Link } from 'wouter';
 
 import 'components/Gif/styles.css';
 
-export default function Gif ( { title, id, url } ) {
+function Gif ( { title, id, url } ) {
 
     return(
         <div className='gif'>
@@ -13,3 +14,5 @@ export default function Gif ( { title, id, url } ) {
         </div>
     )
 }
+
+export default React.memo(Gif);
