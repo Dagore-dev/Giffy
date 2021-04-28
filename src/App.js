@@ -4,6 +4,7 @@ import { Link, Route } from 'wouter';
 import './normalize.css';
 import './App.css';
 import {GifContextProvider} from './context/GifsContext';
+import NotFound from 'views/NotFound';
 
 const SearchResultsPage = React.lazy(() => import('views/SearchResults'));
 const DetailPage = React.lazy(() => import('views/Detail'));
@@ -15,23 +16,25 @@ function App() {
 
     <div className='App'>
         <Suspense fallback='Cargando...'>
-        <section className='App-content'>
+          <section className='App-content'>
 
-          <Link to='/'>
-            <img className='App-logo' alt='Giffy logo' src='/logo.png' ></img>
-          </Link>
-          
-          <GifContextProvider>
+            <Link to='/'>
+              <img className='App-logo' alt='Giffy logo' src='/logo.png' ></img>
+            </Link>
+            
+            <GifContextProvider>
 
-            <Route component={SearchResultsPage} path='/search/:keyword' />
+              <Route component={SearchResultsPage} path='/search/:keyword' />
 
-            <Route component={DetailPage} path='/gif/:id'/>
+              <Route component={DetailPage} path='/gif/:id'/>
 
-            <Route component={HomePage} path='/'/>   
+              <Route component={HomePage} path='/'/> 
 
-          </GifContextProvider>
+              <Route component={NotFound} path='/NotFound' />  
 
-        </section>
+            </GifContextProvider>
+
+          </section>
         </Suspense>
       </div>
    

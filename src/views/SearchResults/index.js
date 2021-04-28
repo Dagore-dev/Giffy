@@ -1,9 +1,11 @@
 import { useEffect, useRef, useCallback } from 'react';
 import debounce from 'just-debounce-it';
+import {Helmet} from 'react-helmet';
 
 import ListOfGifs from 'components/ListOfGifs';
 import useGifs from 'hooks/useGifs';
 import useNearScreen from 'hooks/useNearScreen';
+
 
 export default function SearchResults ( {params} ) {
   const { keyword } = params;
@@ -15,6 +17,8 @@ export default function SearchResults ( {params} ) {
     () => setPage(prevPage => prevPage + 1), 200
   ),[setPage])
 
+  const title = `Resultados para "${keyword}"`;
+
   useEffect(function () {
     if(isNearScreen) debounceHandleNextPage();
   },[isNearScreen, debounceHandleNextPage])
@@ -23,9 +27,15 @@ export default function SearchResults ( {params} ) {
     {loading 
     ? <h2>Cargando ...</h2>
     : <>
-      <ListOfGifs gifs={gifs} keyword={keyword}/>
-      <span ref={externalRef}></span>
-    </>}
+        <Helmet>
+          <title>{title}</title>
+          <meta name="description" content={title}></meta>
+        </Helmet>
 
+        <ListOfGifs gifs={gifs} keyword={keyword}/>
+
+        <span id='visor' ref={externalRef}></span>
+      </>
+    }
   </>
 }

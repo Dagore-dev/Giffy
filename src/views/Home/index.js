@@ -1,3 +1,4 @@
+import {Helmet} from 'react-helmet';
 
 import useGifs from 'hooks/useGifs';
 import ListOfGifs from 'components/ListOfGifs';
@@ -9,6 +10,10 @@ export default function Home () {
 
     return(
         <>
+            <Helmet>
+                <title>Inicio | Giffy</title>
+            </Helmet>
+
             <SearchForm />
 
             <h2>Última búsqueda</h2>

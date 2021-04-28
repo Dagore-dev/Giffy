@@ -1,19 +1,32 @@
-import { useEffect, useState } from 'react';
+import { Redirect } from 'wouter';
+import {Helmet} from 'react-helmet';
 
-import useGlobalGifs from 'hooks/useGlobalGifs';
-import getSingleGif from 'services/getSingleGif';
+import useSingleGif from 'hooks/useSingleGif';
 import Gif from 'components/Gif';
 
 export default function Detail( { params } ) {
     
-    const gifs = useGlobalGifs();
-    const gif = gifs.find(singleGif => singleGif.id === params.id);
-    const [gifRequired, setGifRequired] = useState();
+    const { gif, isLoading, isError } = useSingleGif( { id: params.id } );
+    const title = gif ? gif.title : 'Giffy';
 
-    useEffect(() => {
-        getSingleGif(params)
-            .then(res => setGifRequired(res))
-    },[params])
 
-    return gif !== undefined ?  <Gif {...gif} /> : <Gif {...gifRequired} />
+    if(isLoading) return (
+        <>
+            <Helmet>
+                <title>Cargando ...</title>
+            </Helmet>
+            <h2>Cargando ...</h2>
+        </>
+    )
+    if(isError) return <Redirect to='/NotFound' />
+    if(!gif) return null
+
+    return  (
+        <>
+            <Helmet>
+                <title>{title} | Giffy</title>
+            </Helmet>
+            <Gif {...gif} />
+        </>
+    )
 }
