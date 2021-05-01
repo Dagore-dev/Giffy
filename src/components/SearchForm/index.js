@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useLocation } from 'wouter';
 
+import './styles.css';
+
 function SearchForm () {
     const [keyword, setKeyword] = useState('');
     const [, push] = useLocation();
@@ -15,9 +17,9 @@ function SearchForm () {
     }
 
     return(
-        <form onSubmit={handleSubmit}>
-            <input onChange={handleChange} type='text' placeholder='Busca gifs aquí' value={keyword}/>
-            <input type='submit' value='Buscar' />
+        <form className='form' onSubmit={handleSubmit}>
+            <input className='form__text' onChange={handleChange} type='text' placeholder='Busca gifs aquí' value={keyword}/>
+            <input className='form__button' type='submit' value='Buscar' />
         </form>
     )
 }

@@ -1,0 +1,26 @@
+.form{
+    display: flex;
+    justify-content: center;
+    font-size: 1rem;
+}
+
+.form__text,
+.form__button{
+    outline: none;
+    border: none;
+    border-radius: 15px;
+    margin: .5rem;
+    height: 30px;
+    line-height: 30px;
+}
+
+.form__text{
+    padding-left: 1rem;
+}
+
+.form__button{
+    cursor: pointer;
+    color: #f0f8ff;
+    background-color: #5af;
+    width: 85px;
+}

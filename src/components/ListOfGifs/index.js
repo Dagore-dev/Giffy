@@ -1,5 +1,5 @@
 
-import 'components/ListOfGifs/styles.css';
+import './styles.css';
 import Gif from 'components/Gif';
 
 

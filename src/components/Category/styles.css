@@ -1,0 +1,25 @@
+.trends{
+    margin: 1rem;
+    width: 90vw;
+    height: 300px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.trends__item{
+    margin: 0 1rem;
+    width: 200px;
+    height: 25px;
+    line-height: 25px;
+    text-align: center;
+    overflow: hidden;
+    border-radius: 15px;
+    background-color: #5f5;
+}
+
+.trends__link{
+    color: #2c2c2c;
+    font-size: 1rem;
+}

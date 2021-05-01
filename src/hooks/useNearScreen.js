@@ -1,40 +1,38 @@
-import { useState, useEffect, useRef } from 'react';
+import {useEffect, useState, useRef} from 'react'
 
-export default function useNearScreen ( { distance = '100px', externalRef, once = true } = {} ) {
-    const [isNearScreen, setIsNearScreen] = useState(false);
-    const fromRef = useRef();
-    
-    useEffect(function () {
-        let observer;
+export default function useNearScreen ({ distance = '100px', externalRef, once = true } = {}) {
+  const [isNearScreen, setShow] = useState(false)
+  const fromRef = useRef()
 
-        const visor = externalRef ? externalRef.current : fromRef.current;
+  useEffect(() => {
+    let observer
 
-        const onChange = (entries, observer) => {
-            const element = entries[0];
-            if(element.isIntersecting){
-                setIsNearScreen(true);
-                once && observer.disconnect();
-            }
-            else{
-                !once && setIsNearScreen(false);
-            }
-        }
+    const element = externalRef ? externalRef.current : fromRef.current
 
-        Promise.resolve(
-            typeof IntersectionObserver !== 'undefined'
-            ? IntersectionObserver
-            : import('react-intersection-observer')
-        )
-            .then(() => {
-                observer = new IntersectionObserver(onChange, {
-                    rootMargin: distance
-                });
-            
-                if(visor) observer.observe(visor);
-            })
-        
-        return () => observer && observer.disconnect();
+    const onChange = (entries, observer) => {
+      const el = entries[0]
+      if (el.isIntersecting) {
+        setShow(true)
+        once && observer.disconnect()
+      } else {
+        !once && setShow(false)
+      }
+    }
+
+    Promise.resolve(
+      typeof IntersectionObserver !== 'undefined'
+        ? IntersectionObserver
+        : import('react-intersection-observer')
+    ).then(() => {
+      observer = new IntersectionObserver(onChange, {
+        rootMargin: distance
+      })
+  
+      if (element) observer.observe(element)
     })
 
-    return { isNearScreen, fromRef };
+    return () => observer && observer.disconnect()
+  })
+
+  return {isNearScreen, fromRef}
 }

@@ -11,7 +11,7 @@ export default function SearchResults ( {params} ) {
   const { keyword } = params;
   const externalRef = useRef();
   const { loading, gifs, setPage } = useGifs( { keyword } );
-  const { isNearScreen } = useNearScreen( { externalRef: loading ? null : externalRef, distance: '300px', once: false } );
+  const { isNearScreen } = useNearScreen( { externalRef: loading ? null : externalRef, distance: '100px', once: false } );
 
   const debounceHandleNextPage =  useCallback(() => debounce(
     () => setPage(prevPage => prevPage + 1), 200
@@ -34,7 +34,7 @@ export default function SearchResults ( {params} ) {
 
         <ListOfGifs gifs={gifs} keyword={keyword}/>
 
-        <span id='visor' ref={externalRef}></span>
+        <div id='visor' ref={externalRef}></div>
       </>
     }
   </>
