@@ -1,6 +1,6 @@
 import { apiKey, apiURL } from 'services/settings';
 
-export default async function getGifs ( { limit = 25, keyword = 'wandavision', page = 0 } = {} ) {
+export default async function getGifs ( { limit = 25, keyword = '', page = 0 } = {} ) {
     const api = `${apiURL}/search?api_key=${apiKey}&q=${keyword}&limit=${limit}&offset=${page * limit}&rating=g&lang=es`;
 
     try{
