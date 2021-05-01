@@ -4,7 +4,7 @@ import './styles.css';
 
 export default function Category({ name, options = [] }) {
     return (
-      <section>
+      <>
         <h2>{name}</h2>
         
         <ul className='trends'>
@@ -23,6 +23,6 @@ export default function Category({ name, options = [] }) {
 
         </ul>
 
-      </section>
+      </>
     );
   }
